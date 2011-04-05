@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
   def index
-    @countries = Country.all
+    @countries = Country.with_advice
   end
 
 end
