@@ -30,3 +30,34 @@ namespace :fco do
     end
   end
 end
+
+namespace :import do
+
+  desc "Import country bounding boxes"
+  task :countries  => :environment do    
+    require 'rgeo/shapefile'
+
+    RGeo::Shapefile::Reader.open("#{Rails.root}/import/countries/countries.shp") do |file|
+      puts "File contains #{file.num_records} records."
+      file.each do |record|
+        name = record.attributes['NAME']
+        puts name
+        flat_map = record.geometry.flat_map
+
+        polygons = []
+        flat_map.each do |pg|
+          polygons << pg.as_text.match(/\(\((.*)\)\)/)[1].split(", ").map do |point|
+            point.split(" ")
+          end
+        end
+        
+        country = Country.find_or_create_by_name(name)
+        country.polygons = polygons
+        country.save
+
+      end
+
+    end
+
+  end
+end

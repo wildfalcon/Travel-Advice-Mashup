@@ -5,7 +5,6 @@ body{
 #wrap {
 	width: 960px;
 	margin: 0 auto;
-	background: red;
 	
 	
 	#header {
@@ -13,19 +12,16 @@ body{
 		padding-top: 10px;
 		margin-bottom: 5px;
 		height: 75px;
-		background: pink;
 	}
 	
 	#main {		
 	  @include clearfix;
 	  padding: 10px;	
 		#primary{
-		  background: green;
 			float: left;
 			width: 760p;
 		}
 		#secondary{
-		  background: blue;
 			float: right;
 			width: 175px;
 		}
