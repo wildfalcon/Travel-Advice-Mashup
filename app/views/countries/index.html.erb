@@ -1,0 +1,9 @@
+<h1>Contries#index</h1>
+<p>Find me in app/views/contries/index.html.erb</p>
+
+
+<ul>
+<% @countries.each do |country| %>
+	<li><%= country.name %> - <%= country.travel_advice %> - <%= country.updated_at.to_date.to_s %></li>
+<% end %>
+</ul>
