@@ -1,0 +1,44 @@
+
+@mixin clearfix {
+  // Taken from http://css-discuss.incutio.com/wiki/Clearing_Space (Option 2)
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+  display: inline-block;
+
+  /* Hides from IE5/Mac \*/
+  * html & {height: 1px;}
+  & {display: block;}
+  /* End hide from IE5/Mac */
+}
+
+.clearfix{
+	@include clearfix;
+}
+
+/*.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}*/
