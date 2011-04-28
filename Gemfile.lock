@@ -38,6 +38,8 @@ GEM
     activesupport (3.0.5)
     arel (2.0.9)
     builder (2.1.2)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     dbf (1.5.1)
       activesupport (~> 3.0.0)
       fastercsv (= 1.5.3)
@@ -104,6 +106,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass (= 0.10.6)
   dbf
   factory_girl_rails
   haml

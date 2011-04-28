@@ -6,6 +6,7 @@ gem 'mysql2'
 gem 'nokogiri'
 gem 'haml'
 gem 'hassle', :git => "https://github.com/neonlex/hassle.git"
+gem "compass", "0.10.6"
 
 group :development, :test do
 	gem 'rspec-rails'
