@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Country do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Validations" do
+    let(:country){ Factory(:country)}
+    
+    it "should have a valid factory" do
+      country.should be_valid
+    end
+  end
 end
