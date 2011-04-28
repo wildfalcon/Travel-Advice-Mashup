@@ -1,6 +1,8 @@
 TravelAlertMashup::Application.routes.draw do
   get "countries/index"
 
+  root :to => 'countries#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
