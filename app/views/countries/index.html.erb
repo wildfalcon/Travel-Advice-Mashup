@@ -20,21 +20,24 @@
 				coords.push(c)
     	<% end %>
 
-		poly = new google.maps.Polygon({
-			paths: coords,
-			strokeColor: "#FF0000",
-			strokeOpacity: 0.8,
-			strokeWeight: 2,
-			fillColor: "#FF0000",
-			fillOpacity: 0.35
-		});
+      var country_color = "<%= outline.country.no_travel_all? ? "#FF0000" : "#0000FF" %>";
+
+  		poly = new google.maps.Polygon({
+  			paths: coords,
+  			strokeColor: country_color,
+  			strokeOpacity: 0.8,
+  			strokeWeight: 2,
+  			fillColor: country_color,
+  			fillOpacity: 0.35
+  		});
 		
-    google.maps.event.addListener(poly, 'click', function() {
-      console.log("you clicked <%=  outline.country.name %>");
-    });
+      google.maps.event.addListener(poly, 'click', function() {
+        $(".country_with_advice").hide()
+        $("#<%= dom_id(outline.country) %>").show();
+      });
     
 		
-		poly.setMap(map);
+  		poly.setMap(map);
 
 		<% end %>
 
@@ -45,16 +48,13 @@
 
 
 <h1>Countries with a current Foreign Office Warning</h1>
+<p>(Click on a country for details)</p>
 
 
 <div id="advice_map"></div>
 
 <div id="countries">
-  <ul>
-  <% @countries.each do |country| %>
-  	<li><%= country.name %> - <%= country.travel_advice %></li>
-  <% end %>
-  </ul>
+  <%= render @countries %>
   
 </div>
 

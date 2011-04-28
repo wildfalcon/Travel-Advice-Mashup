@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428114359) do
+ActiveRecord::Schema.define(:version => 20110428132313) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110428114359) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "outline_id"
+    t.text     "advice"
   end
 
   create_table "outlines", :force => true do |t|

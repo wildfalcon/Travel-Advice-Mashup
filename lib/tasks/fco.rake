@@ -11,22 +11,19 @@ namespace :fco do
 
     
 
-    doc.search('item').each do |item|      
+    doc.search('item').reverse.each do |item|      
       title  = item.search('title').first.content
       puts title
-      link = item.search('link').first.content
+      # link = item.search('link').first.content
       desc = item.search('description').first.content
-      pubTime = item.search('pubDate').first.content.to_time
+      # pubTime = item.search('pubDate').first.content.to_time
       travel_advice = item.children.map(&:name).select{|n| n =~ /noTravel/}.first
-      advice = travel_advice.present? ? travel_advice : "None"
+      # advice = travel_advice.present? ? travel_advice : "None"
       
       name = title.split[0..-3].join " "
-
-
-      
-      
       country = Country.find_or_create_by_name(name)
       country.travel_advice = travel_advice
+      country.advice = desc
       country.save
 
     end

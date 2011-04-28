@@ -8,12 +8,19 @@
   width: 700px;
 }
 
-@import "compass/css3/border-radius";
-
-#countries{
-  background: pink;
+.country_with_advice{
+  display: none;
+  border: 2px solid #0000ff;
+  padding: 10px;
+  margin-top: 10px;
   
-
-    @include border-radius(10px);
-
+  .topbar{
+    @include clearfix;
+    .country_name{float:left;}
+    .country_advice_type{float:right;}
+  }
+  
+  &.no_travel_all{
+    border: 2px solid #ff0000;
+  }
 }

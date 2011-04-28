@@ -1,0 +1,23 @@
+<div id=<%= dom_id(country) %> class="country_with_advice <%= country_classes(country) %>">
+  
+  <div class="topbar">
+
+    <div class="country_name">
+      <h2><%= country.name %></h2>    
+    </div>
+
+    <div class="country_advice_type">
+      <% if country.no_travel_all? %>
+        <strong>No Travel (All of Country)</strong>
+      <% else %>
+          <strong>No Travel (Parts of Country)</strong>
+      <% end %>
+    </div>
+    
+  </div>
+  
+  
+  <% if country.advice.present? %>
+    <%= country.advice.html_safe %>
+  <% end %>
+</div>

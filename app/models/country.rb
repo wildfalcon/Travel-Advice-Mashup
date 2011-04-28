@@ -2,22 +2,20 @@ class Country < ActiveRecord::Base
 
   belongs_to :outline
   serialize :polygons
+  after_create :associate_outline
 
   scope :with_advice, where('travel_advice is not null')
 
-
-  def outline_with_memorisation
-    if self.outline_id.present?
-      outline_without_memorisation
-    else
-      o = Outline.find_by_name(self.name)
-      self.outline = o if o.present?
-      self.save
-      o
-    end
+  def no_travel_all?
+    self.travel_advice == "noTravelAll" ? true : false
   end
-  alias_method_chain :outline, :memorisation
-
+  
+  protected
+ 
+  def associate_outline
+    self.outline = Outline.find_by_name(self.name)
+  end
+ 
 end
 
 
