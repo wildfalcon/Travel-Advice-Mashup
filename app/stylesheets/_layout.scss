@@ -19,10 +19,10 @@ body{
 
   #main {		
     @include clearfix;
-    padding: 0 10px;	
     #primary{
       float: left;
-      width: 760p;
+      width: 700px;
+      margin: 0 10px;
     }
     #secondary{
       float: right;
