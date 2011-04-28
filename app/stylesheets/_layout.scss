@@ -1,0 +1,83 @@
+body{
+  background: $dark;
+}
+#wrap {
+  width: 960px;
+  margin: 0 auto;
+  background: $light;
+
+
+  #header {
+    @incldue clearfix;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    height: 75px;
+    background: $blue;
+    color: $light;
+    a {color: $light}
+  }
+
+  #main {		
+    @include clearfix;
+    padding: 0 10px;	
+    #primary{
+      float: left;
+      width: 760p;
+    }
+    #secondary{
+      float: right;
+      width: 175px;
+    }
+  }
+}
+
+#footer{
+  font-size: small;
+  padding: 0 20px;
+  line-height: 30px;
+  background: $blue;
+  color: $light;
+
+  a {
+    color: $light;
+  }
+  a:visited {
+    color: $light;
+  }
+  a:hover {
+    color: $medium;
+  }
+
+
+  #follow_me{
+    float: left;
+    a {
+      display: block;
+      background: url("images/icons/twitter.png");
+      text-indent: -999em;
+      margin-top: 2px;
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  #footer_links{
+    float: left;
+    margin-left: 50px;
+    line-height: 30px;
+
+    ul{
+      li{
+        float: left;
+        list-style-type: none;
+        margin: 0;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  #wildfalcon_attribution{
+    float: right;
+
+  }
+}

@@ -1,3 +1,10 @@
+$red: #D93240;
+$light: #F2F2F2;
+$medium: #F2DEC4;
+$dark: #928F86;
+$blue: #303E4B;
+
+@import "compass/reset";
 
 @mixin clearfix {
   // Taken from http://css-discuss.incutio.com/wiki/Clearing_Space (Option 2)
@@ -21,24 +28,3 @@
 .clearfix{
 	@include clearfix;
 }
-
-/*.clearfix:after {
-	content: ".";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-}
- 
-.clearfix {
-	display: inline-block;
-}
- 
-html[xmlns] .clearfix {
-	display: block;
-}
- 
-* html .clearfix {
-	height: 1%;
-}*/
