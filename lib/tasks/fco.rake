@@ -9,9 +9,11 @@ namespace :fco do
 
     doc = Nokogiri::XML(open(url))
 
+    
 
-    doc.search('item').each do |item|
+    doc.search('item').each do |item|      
       title  = item.search('title').first.content
+      puts title
       link = item.search('link').first.content
       desc = item.search('description').first.content
       pubTime = item.search('pubDate').first.content.to_time
@@ -33,8 +35,8 @@ end
 
 namespace :import do
 
-  desc "Import country bounding boxes"
-  task :countries  => :environment do    
+  desc "Import country outlines"
+  task :outlines  => :environment do    
     require 'rgeo/shapefile'
 
     RGeo::Shapefile::Reader.open("#{Rails.root}/import/countries/countries.shp") do |file|
@@ -51,9 +53,9 @@ namespace :import do
           end
         end
         
-        country = Country.find_or_create_by_name(name)
-        country.polygons = polygons
-        country.save
+        outline = Outline.find_or_create_by_name(name)
+        outline.polygons = polygons
+        outline.save
 
       end
 

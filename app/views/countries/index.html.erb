@@ -12,10 +12,10 @@
 		
 		var map = new google.maps.Map(document.getElementById("advice_map"),myOptions);
 
-		<% @countries.each do |country| %>
+		<% @outlines.each do |outline| %>
 			var coords = []
 
-			<% country.polygons.each do |pg| %>
+			<% outline.polygons.each do |pg| %>
 				var c = [<%= pg.map{|p| "new google.maps.LatLng(#{p.last.to_f}, #{p.first.to_f})"}.join(', ') %>];
 				coords.push(c)
     	<% end %>
@@ -28,6 +28,11 @@
 			fillColor: "#FF0000",
 			fillOpacity: 0.35
 		});
+		
+    google.maps.event.addListener(poly, 'click', function() {
+      console.log("you clicked <%=  outline.country.name %>");
+    });
+    
 		
 		poly.setMap(map);
 
@@ -44,9 +49,12 @@
 
 <div id="advice_map"></div>
 
-<ul>
-<% @countries.each do |country| %>
-	<li><%= country.name %> - <%= country.travel_advice %></li>
-<% end %>
-</ul>
+<div id="countries">
+  <ul>
+  <% @countries.each do |country| %>
+  	<li><%= country.name %> - <%= country.travel_advice %></li>
+  <% end %>
+  </ul>
+  
+</div>
 
